@@ -1,252 +1,358 @@
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600 &display=swap');
+
+  .container {
+    max-width: 100vw;
+  }
   .header {
     position: fixed;
     width: 100%;
-    top: 0;
     left: 0;
-    z-index: var(--z-fixed);
+    top: 0;
+    z-index: 99;
+    padding: 2px;
   }
-  .navbar {
+  .header-main {
+    background-color: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: #fff;
+    padding: 4px 0;
+    border-radius: 4px;
   }
-
-  .menu {
+  .header .logo {
+    padding: 0 15px;
+  }
+  .header .logo a {
+    font-size: 30px;
+    text-transform: capitalize;
+    color: #e91e63;
+    font-weight: 600;
+  }
+  .header .nav-menu {
+    padding: 0 15px;
+  }
+  .header .menu > .menu-item {
+    display: inline-block;
+    margin-left: 30px;
     position: relative;
-    height: var(--header-height);
-    display: flex;
-    justify-content: space-between;
+  }
+  .header .menu > .menu-item > a {
+    display: block;
+    padding: 12px 0;
+    font-size: 16px;
+    color: #000000;
+    text-transform: capitalize;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  .header .menu > .menu-item > a .plus {
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    position: relative;
+    margin-left: 5px;
+    pointer-events: none;
+  }
+  .header .menu > .menu-item > a .plus:before,
+  .header .menu > .menu-item > a .plus:after {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    left: 50%;
+    top: 50%;
+    background-color: #000000;
+    height: 2px;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+  }
+  .header .menu > .menu-item:hover > a .plus:before,
+  .header .menu > .menu-item:hover > a .plus:after {
+    background-color: #e91e63;
+  }
+  .header .menu > .menu-item > a .plus:after {
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+  .header .menu > .menu-item > .sub-menu > .menu-item > a:hover,
+  .header .menu > .menu-item:hover > a {
+    color: #e91e63;
+  }
+  .header .menu > .menu-item > .sub-menu {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 220px;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: #ffffff;
+    padding: 10px 0;
+    border-top: 3px solid #e91e63;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+  @media(min-width: 992px) {
+    .header .menu > .menu-item-has-children:hover > .sub-menu {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    .header .menu > .menu-item-has-children:hover > a .plus:after {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+  }
+  .header .menu > .menu-item > .sub-menu > .menu-item {
+    display: block;
+  }
+  .header .menu > .menu-item > .sub-menu > .menu-item > a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+  }
+  .header .open-nav-menu {
+    height: 34px;
+    width: 40px;
+    margin-right: 15px;
+    display: none;
     align-items: center;
-  }
-
-  .navigation {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-  }
-
-  .navigation li {
-    margin-right: 20px;
-  }
-
-  .navigation li:last-child {
-    margin-right: 0;
-  }
-
-  .navigation a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-  }
-
-  .dropdown {
-    position: relative;
-  }
-
-  .dropbtn {
+    justify-content: center;
     cursor: pointer;
   }
-
-  .dropdown-content {
-    display: none;
+  .header .open-nav-menu span {
+    display: block;
+    height: 3px;
+    width: 24px;
+    background-color: #000000;
+    position: relative;
+  }
+  .header .open-nav-menu span:before,
+  .header .open-nav-menu span:after {
+    content: '';
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    box-sizing: border-box;
   }
-
-  .dropdown:hover .dropdown-content {
-    display: block;
+  .header .open-nav-menu span:before {
+    top: -7px;
   }
-
-  .dropdown-content a {
-    padding: 12px 16px;
-    display: block;
-    text-decoration: none;
-    color: #333;
+  .header .open-nav-menu span:after {
+    top: 7px;
   }
-
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-
-  .right-content {
-    display: flex;
+  .header .close-nav-menu {
+    height: 40px;
+    width: 40px;
+    background-color: #ffffff;
+    margin: 0 0 15px 15px;
+    cursor: pointer;
+    display: none;
     align-items: center;
-    gap: 30px;
+    justify-content: center;
+  }
+  .header .close-nav-menu img {
+    width: 16px;
+  }
+  .header .menu-overlay {
+    position: fixed;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
   }
 
-  @media screen and (min-width: 768px) {
-    .menu {
+  /* responsive */
+
+  @media(max-width: 991px) {
+    .header .menu-overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .header .nav-menu {
+      position: fixed;
+      right: -280px;
+      visibility: hidden;
+      width: 280px;
+      height: 100%;
+      top: 0;
+      overflow-y: auto;
+      background-color: #222222;
+      z-index: 1000;
+      padding: 15px 0;
+      transition: all 0.5s ease;
+    }
+    .header .nav-menu.open {
+      visibility: visible;
+      right: 0;
+    }
+    .header .menu > .menu-item {
+      display: block;
+      margin: 0;
+    }
+    .header .menu > .menu-item-has-children > a {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0;
     }
-
-    .navigation li {
-      margin-right: 30px;
+    .header .menu > .menu-item > a {
+      color: #ffffff;
+      padding: 12px 15px;
+      border-bottom: 1px solid #333333;
     }
-    .nav__toggle,
-    .nav__close {
-      display: none;
+    .header .menu > .menu-item:first-child > a {
+      border-top: 1px solid #333333;
     }
-  }
-
-  @media screen and (max-width: 767px) {
-    .menu {
-      flex-direction: column;
-      background-color: #fff;
-      position: fixed;
-      top: 0;
-      left: 0;
+    .header .menu > .menu-item > a .plus:before,
+    .header .menu > .menu-item > a .plus:after {
+      background-color: #ffffff;
+    }
+    .header .menu > .menu-item-has-children.active > a .plus:after {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    .header .menu > .menu-item > .sub-menu {
       width: 100%;
-      height: 100%;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease-in-out;
+      position: relative;
+      opacity: 1;
+      visibility: visible;
+      border: none;
+      background-color: transparent;
+      box-shadow: none;
+      transform: translateY(0px);
+      padding: 0;
+      left: auto;
+      top: auto;
+      max-height: 0;
+      overflow: hidden;
     }
-
-    .menu.active {
-      transform: translateX(0);
+    .header .menu > .menu-item > .sub-menu > .menu-item > a {
+      padding: 12px 45px;
+      color: #ffffff;
+      border-bottom: 1px solid #333333;
     }
-
-    .navigation {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .navigation li {
-      margin-right: 0;
-      margin-bottom: 15px;
-    }
-
-    .nav__toggle,
-    .nav__close {
-      display: inline-flex;
-      font-size: 1.25rem;
-      color: var(--text-color);
-      cursor: pointer;
+    .header .close-nav-menu,
+    .header .open-nav-menu {
+      display: flex;
     }
   }
 </style>
 
-<header class="header navbar">
-  <div class="logo">
-    <a href="/">
-      <img src="{{ 'Theni_Anantham_English_Logo.png' | asset_img_url: 'small' }}" alt="thenianamtham logo" />
-    </a>
-  </div>
-  <nav class="menu" id="menu">
-    <div>
-      <ul class="navigation">
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/blog">Blog</a>
-        </li>
-        <li class="dropdown">
-          <a class="dropbtn" href="#">Silk Sarees</a>
-          <ul class="dropdown-content">
-            <li>
-              <a href="#">Item 1</a>
-            </li>
-            <li>
-              <a href="#">Item 2</a>
-            </li>
-            <li>
-              <a href="#">Item 3</a>
-            </li>
-            <li>
-              <a href="#">Item 4</a>
-            </li>
-            <li>
-              <a href="#">Item 5</a>
-            </li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a class="dropbtn" href="#">Silk Cotton</a>
-          <ul class="dropdown-content">
-            <li>
-              <a href="#">Item 1</a>
-            </li>
-            <li>
-              <a href="#">Item 2</a>
-            </li>
-            <li>
-              <a href="#">Item 3</a>
-            </li>
-            <li>
-              <a href="#">Item 4</a>
-            </li>
-            <li>
-              <a href="#">Item 5</a>
-            </li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a class="dropbtn" href="#">Cotton Sarees</a>
-          <ul class="dropdown-content">
-            <li>
-              <a href="#">Item 1</a>
-            </li>
-            <li>
-              <a href="#">Item 2</a>
-            </li>
-            <li>
-              <a href="#">Item 3</a>
-            </li>
-            <li>
-              <a href="#">Item 4</a>
-            </li>
-            <li>
-              <a href="#">Item 5</a>
-            </li>
-            <li>
-              <a href="#">Item 6</a>
-            </li>
-            <li>
-              <a href="#">Item 7</a>
-            </li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a class="dropbtn" href="#">More</a>
-          <ul class="dropdown-content">
-            <li>
-              <a href="#">Item 1</a>
-            </li>
-            <li>
-              <a href="#">Item 2</a>
-            </li>
-            <li>
-              <a href="#">Item 3</a>
-            </li>
-            <li>
-              <a href="#">Item 4</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <div class="nav__close" id="nav__close">
-        <i class="ri-close-line"></i>
+<header class="header">
+  <div class="container">
+    <div class="header-main">
+      <div class="logo">
+        <a href="/"><img src="{{ 'Theni_Anantham_English_Logo.png' | asset_img_url: 'small' }}" alt="thenianamtham logo" /></a>
       </div>
+      <div class="open-nav-menu">
+        <span></span>
+      </div>
+      <div class="menu-overlay"></div>
+      <nav class="nav-menu">
+        <div class="close-nav-menu">
+          <img src="{{ 'close.svg' | asset_img_url: 'small' }}" alt="close">
+        </div>
+        <ul class="menu">
+          <li class="menu-item">
+            <a href="/">HOME</a>
+          </li>
+          <li class="menu-item">
+            <a href="/blogs/blogs">BLOGS</a>
+          </li>
+          <li class="menu-item menu-item-has-children">
+            <a href="#" data-toggle="sub-menu">SILK SAREES<i class="plus"></i>
+            </a>
+            <ul class="sub-menu">
+              <li class="menu-item">
+                <a href="/collections/all">SILK SAREES 1</a>
+              </li>
+              <li class="menu-item">
+                <a href="/collections/all">SILK SAREES 2</a>
+              </li>
+              <li class="menu-item">
+                <a href="/collections/all">SILK SAREES 3</a>
+              </li>
+              <li class="menu-item">
+                <a href="/collections/all">SILK SAREES 4</a>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-item menu-item-has-children">
+            <a href="#" data-toggle="sub-menu">SILK COTTON
+              <i class="plus"></i>
+            </a>
+            <ul class="sub-menu">
+              <li class="menu-item">
+                <a href="/collections/all">SILK COTTON 1</a>
+              </li>
+              <li class="menu-item">
+                <a href="/collections/all">SILK COTTON 2</a>
+              </li>
+              <li class="menu-item">
+                <a href="/collections/all">SILK COTTON 3</a>
+              </li>
+              <li class="menu-item">
+                <a href="/collections/all">SILK COTTON 4</a>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-item menu-item-has-children">
+            <a href="#" data-toggle="sub-menu">COTTON SAREES
+              <i class="plus"></i>
+            </a>
+            <ul class="sub-menu">
+              <li class="menu-item">
+                <a href="/collections/all">COTTON SAREES 1</a>
+              </li>
+              <li class="menu-item">
+                <a href="/collections/all">COTTON SAREES 2</a>
+              </li>
+              <li class="menu-item">
+                <a href="/collections/all">COTTON SAREES 3</a>
+              </li>
+              <li class="menu-item">
+                <a href="/collections/all">COTTON SAREES 4</a>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-item menu-item-has-children">
+            <a href="#" data-toggle="sub-menu">MORE
+              <i class="plus"></i>
+            </a>
+            <ul class="sub-menu">
+              <li class="menu-item">
+                <a href="/collections/all">MORE 1</a>
+              </li>
+              <li class="menu-item">
+                <a href="/collections/all">MORE 2</a>
+              </li>
+              <li class="menu-item">
+                <a href="/collections/all">MORE 3</a>
+              </li>
+              <li class="menu-item">
+                <a href="/collections/all">MORE 4</a>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="#"><i class="ri-shopping-cart-line"></i>Cart</a>
+          </li>
+          <li class="menu-item">
+            <a href="#"><i class="ri-login-box-line"></i>Login</a>
+          </li>
+        </ul>
+      </nav>
     </div>
-  </nav>
-  <div class="nav__toggle" id="nav__toggle">
-    <i class="ri-menu-line"></i>
   </div>
-  <div class="right-content">
-    <a href="#" class="cart-button"><i class="ri-shopping-cart-line"></i>&nbsp;Cart</a>
-    <a href="#" class="login-button">&nbsp;<i class="ri-login-box-line"></i>&nbsp;Login</a>
-  </div>
-
-
 </header>
 {% schema %}
   {
