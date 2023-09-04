@@ -1,0 +1,89 @@
+<style>
+    
+.containerblog {
+    display: flex;
+    width: 100%;
+  }
+  
+  .columnblog1 {
+    flex: 1;
+    background-color: #A52A2A;
+    overflow-y: auto;
+  }
+  
+  .columnblog1 h2 {
+    margin-top: 0;
+  }
+  
+  .columnblog1 ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .columnblog1 li {
+    cursor: pointer;
+    padding: 8px 0;
+  }
+  
+  .contextblogrow1{
+    height: 500px;
+    margin-bottom: 20px;
+  }
+  
+  .contextblogrow11{
+    height: 80%;
+    background-color: black;
+  }
+  
+  .contextblogrow11 p{
+    color: #A52A2A;
+  }
+  
+  .columnblog2 {
+    flex: 2;
+    background-color: #A52A2A;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 55%; /* Adjust the width as needed */
+    overflow-y: auto;
+  }
+  
+  .columnblog2 h2 {
+    margin-top: 0;
+  }
+  
+  #columnblog2-content {
+    font-style: italic;
+  }
+  
+</style>
+<div class="containerblog">
+      <div class="columnblog1" id="column1">
+        <ul class="context">
+          <li class="contextblogrow1" >
+            <div class="contextblogrow11" data-context="{title:Title 1}">
+              <p>Read More</p>
+            </div>
+          </li>
+          <li class="contextblogrow1" >
+            <div class="contextblogrow11" data-context="{title:Title 2}">
+                <p>Read More</p>
+            </div>
+          </li>
+          <li class="contextblogrow1" >
+            <div class="contextblogrow11" data-context="{title:Title 3}">
+                <img src="" alt="" />
+                <p>Read More</p>
+            </div>
+          </li>
+       
+          </li>
+        </ul>
+      </div>
+      <div class="columnblog2" id="column2">
+        <div id="column2-content">Select a title from Column 1</div>
+      </div>
+    </div>

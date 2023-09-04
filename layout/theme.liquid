@@ -6,15 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="description" content="{{ page_description | escape }}">
     <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" integrity="sha512-HXXR0l2yMwHDrDyxJbrMD9eLvPe3z3qL3PPeozNTsiHJEENxx8DH2CxmV05iwG0dwoz5n4gQZQyYLUNt1Wdgfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
     {{ content_for_header }}
     <!-- Header hook for plugins -->
+    <script src="{{ 'application.js' | asset_url }}" defer="defer"></script>
+    <script src="https://unpkg.com/gsap@3.12.2/dist/gsap.min.js" defer ></script>
     {{ 'application.css' | asset_url | stylesheet_tag }}
-    {{ 'application.js' | asset_url | script_tag }}
   </head>
   <body>
+    {% sections 'header-group' %}
     <main role="main">
       {{ content_for_layout }}
     </main>
+    {% sections 'footer-group' %}
   </body>
 </html>

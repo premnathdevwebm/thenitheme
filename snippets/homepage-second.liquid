@@ -1,0 +1,70 @@
+<style>
+  .grid-container1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .homecontent {
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
+  .grid-item1 {
+    position: relative;
+    background-image: url('{{ 'fram 5 with Backround Work.jpg' | asset_img_url: 'large' }}');
+    width: 100%;
+  }
+  .grid-item2 {
+    position: relative;
+    background-image: url('{{ 'fram 4 with Backround Work.jpg' | asset_img_url: 'large' }}');
+    width: 100%;
+  }
+  .grid-item3 {
+    position: relative;
+    background-image: url('{{ 'fram 1 with Backround Work.jpg' | asset_img_url: 'large' }}');
+    width: 100%;
+  }
+  .homecontent1context{
+    position: absolute;
+    bottom: 20%;
+    left: 20%;
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .text1{
+    font-size: 2rem;
+    margin-right: 20px;
+    color: red;
+  }
+  .arr1{
+    font-size: 3rem;
+  }
+  .arr1:hover{
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+</style>
+<div class="grid-container1">
+  <div class="homecontent grid-item1">
+    <div class="homecontent1context">
+      <span class="text1">SHOP NEW ARRIVALS&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <i class="ri-arrow-right-line arr1"></i>
+    </div>
+  </div>
+  <div class="homecontent grid-item2">
+    <div class="homecontent1context">
+      <span class="text1">SHOP NEW BESTSELLERS</span>
+      <i class="ri-arrow-right-line arr1"></i>
+    </div>
+  </div>
+  <div class="homecontent grid-item3">
+    <div class="homecontent1context">
+        <span class="text1">SHOP NEW ARRIVALS&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <i class="ri-arrow-right-line arr1"></i>
+        </div>
+  </div>
+</div>

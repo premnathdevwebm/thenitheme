@@ -1,0 +1,56 @@
+<style>
+  .grid-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 60% 40%;
+  }
+  .content {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+  .content1 {
+    background-image: url('{{ 'fram 1 with Backround Work.jpg' | asset_img_url: 'large' }}');
+    width: 100%;
+  }
+
+  .centeralign {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slogan {
+    color: white;
+    width: 200px;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+  }
+
+  .shop {
+    color: white;
+    text-decoration: underline;
+    font-size: 2rem;
+  }
+
+  .content2 {
+    background-image: url('{{ 'fram 2 with Backround Work.jpg' | asset_img_url: 'large' }}');
+    width: 100%;
+  }
+</style>
+<div class="grid-container">
+  <div class="content content1">
+    <div class="centeralign">
+      <p class="slogan">IT&apos;S TIME TO STEP UP YOUR GAME</p>
+      <div>
+        <span class="shop">SHOP NOW</span>
+      </div>
+    </div>
+  </div>
+  <div class="content content2"></div>
+</div>

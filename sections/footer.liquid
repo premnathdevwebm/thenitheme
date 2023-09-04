@@ -1,0 +1,176 @@
+<style>
+  .footnavbar {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 0;
+    padding: 2px;
+  }
+  .footnavbarrow1 {
+    display: flex;
+    justify-content: space-between;
+    background-color: #F6F4F2;
+  }
+  .itemfootnav {
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    padding-right: 6px;
+  }
+
+  .itemfootnav i {
+    margin-right: 10px;
+  }
+
+  .footnavbarrow2 {
+    background-color: #2B2B2B;
+    color: #F6F4F2;
+  }
+
+  .footnavbarrow2 span {
+    color: red;
+  }
+
+  .subscribe-container {
+    text-align: center;
+    margin: 0;
+  }
+
+  .subscribe-input {
+    padding: 10px;
+    width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    color: #333;
+  }
+  .subscribe-button {
+    padding: 10px 20px;
+    background-color: #333;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .subscribe-button:hover {
+    background-color: #555;
+  }
+  .checkbox-label {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .checkbox-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #ccc;
+  }
+  .checkbox-input:checked + .checkmark:after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+</style>
+<div class="footnavbar">
+  <div class="footnavbarrow1">
+    <div class="itemfootnav">
+      <h3>GET IN TOUCH</h3>
+      <div>
+        <i class="ri-map-pin-line"></i>11, Main Road, Varadharaj Shopping Complex,
+        Dindigul - 624001.</div>
+      <div>
+        <i class="ri-mail-line"></i>support@theniananthamsilks.com</div>
+      <div>
+        <i class="ri-phone-line"></i>0451-2888 288</div>
+      <div>
+        <i class="ri-facebook-fill"></i>
+        <i class="ri-instagram-line"></i>
+      </div>
+    </div>
+    <div class="itemfootnav">
+      <h3>ABOUT</h3>
+      <ul>
+        <li>About us</li>
+        <li>Blog</li>
+        <li>Privacy Policy</li>
+        <li>Terms of Service</li>
+        <li>Shipping & Returns</li>
+        <li>Refund policy</li>
+      </ul>
+    </div>
+    <div class="itemfootnav">
+      <h3>QUICK LINKS</h3>
+      <ul>
+        <li>Embossed Silk</li>
+        <li>Pochampalli Silk</li>
+        <li>Soft Silk</li>
+        <li>Wedding sarees</li>
+        <li>Tussar sarees</li>
+      </ul>
+    </div>
+    <div class="itemfootnav">
+      <h3>NEWSLETTER SIGNUP</h3>
+      <p>Join the Theni Anantham family and get updates on our newest collections and seasonal discounts!</p>
+      <div class="subscribe-container">
+        <input
+          type="email"
+          class="subscribe-input"
+          placeholder="Enter your email">
+        <button class="subscribe-button">Subscribe</button>
+      </div>
+      <div>
+        <label class="checkbox-label">
+          <input type="checkbox" class="checkbox-input">
+          <span class="checkmark"></span>
+          I agree with the terms and conditions.
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="footnavbarrow2">
+    <div class="item-full">Copyright © 2023
+      <span>THENI ANANTHAM SILKS & READYMADES</span>
+      All rights reserved.</div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "t:sections.footer.name",
+    "blocks": [
+      {
+        "type": "@app"
+      }, {
+        "type": "link_list",
+        "name": "t:sections.footer.blocks.link_list.name",
+        "settings": [
+          {
+            "type": "inline_richtext",
+            "id": "heading",
+            "default": "Quick links",
+            "label": "t:sections.footer.blocks.link_list.settings.heading.label"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
